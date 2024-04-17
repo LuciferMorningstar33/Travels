@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
-import {getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import {getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCWMGvzB39dXMyNN2uNzIEraGUQUeintKo",
@@ -68,3 +68,5 @@ SignIn.addEventListener( "click", (e)=>{
       alert("Invalid credentials, try checking email or password");
     });
 });
+
+  
