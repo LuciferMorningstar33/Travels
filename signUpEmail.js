@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import {getDatabase, set, ref} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
-import {getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+import {getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCWMGvzB39dXMyNN2uNzIEraGUQUeintKo",
@@ -16,10 +16,11 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const database = getDatabase(app);
 
+//signup
 const SignUp = document.getElementById("SignUp");
 SignUp.addEventListener("click",(e) =>{
     var username = document.getElementById('username').value;
-    var  email = document.getElementById('email').value;
+    var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
 
     createUserWithEmailAndPassword(auth, email, password)
@@ -42,4 +43,28 @@ SignUp.addEventListener("click",(e) =>{
       alert(errorMessage);
       // ..
     });
-})
+});
+
+//signin
+const SignIn = document.getElementById("SignIn");
+SignIn.addEventListener( "click", (e)=>{
+    var email = document.getElementById('emailLog').value;
+    var password = document.getElementById('passwordLog').value;
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      const date = new Date();  
+      update(ref(database, 'users/' + user.uid),{
+        last_login : date,
+      })
+      
+      window.location.href="index.html";
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert("Invalid credentials, try checking email or password");
+    });
+});
