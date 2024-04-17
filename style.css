@@ -158,6 +158,7 @@ nav > div {
 }
 nav > div:first-child {
   gap: 10px;
+  margin-right: 20px;
 }
 nav > div:last-child {
   gap: 24px;
@@ -175,6 +176,18 @@ nav > div:last-child > .active:after {
   border-radius: 99px;
   background-color: #ecad29;
 }
+
+.btn{
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  background-color: transparent;
+  color: #fff;
+  border : none;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+
 .indicator {
   position: fixed;
   left: 0;
