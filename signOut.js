@@ -35,7 +35,7 @@ LogOut.addEventListener('click', (e)=>{
     signOut(auth).then(() => {
         // Sign-out successful.
         alert("User logged Out!")
-        window.location.href="form.html";
+        window.location.href="index.html";
       }).catch((error) => {
         // An error happened.
         const errorCode = error.code;

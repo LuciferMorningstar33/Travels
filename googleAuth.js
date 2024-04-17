@@ -31,7 +31,7 @@ googleLogin.addEventListener("click", function(){
         const token = credential.accessToken; //
         const user = result.user;
         console.log(user);
-        window.location.href="index.html";
+        window.location.href="event.html";
     }).catch((error) => {
     
         const errorCode = error.code;
@@ -52,7 +52,7 @@ googleLogin1.addEventListener("click", function(){
         const token = credential.accessToken; //
         const user = result.user;
         console.log(user);
-        window.location.href="index.html";
+        window.location.href="event.html";
     }).catch((error) => {
     
         const errorCode = error.code;

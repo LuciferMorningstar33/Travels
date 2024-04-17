@@ -59,7 +59,7 @@ SignIn.addEventListener( "click", (e)=>{
         last_login : date,
       })
       
-      window.location.href="index.html";
+      window.location.href="event.html";
       // ...
     })
     .catch((error) => {
