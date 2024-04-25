@@ -1,3 +1,31 @@
+const postActionsControllers = document.querySelectorAll(
+  ".post-actions-controller"
+);
+
+// When post action controllers are clicked, the action content is opened and closed
+
+postActionsControllers.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const targetId = btn.getAttribute("data-target");
+    const postActionsContent = document.getElementById(targetId);
+
+    if (postActionsContent) {
+      const isVisible = postActionsContent.getAttribute("data-visible");
+
+      if (isVisible === "false") {
+        postActionsContent.setAttribute("data-visible", "true");
+        postActionsContent.setAttribute("aria-hidden", "false");
+        btn.setAttribute("aria-expanded", "true");
+      } else {
+        postActionsContent.setAttribute("data-visible", "false");
+        postActionsContent.setAttribute("aria-hidden", "true");
+        btn.setAttribute("aria-expanded", "false");
+      }
+    }
+  });
+});
+
+
 
 const data = [
     {
@@ -52,8 +80,21 @@ const data = [
 
   const showSearch = document.getElementById("glass");
   const searchnav =  document.getElementById("search");
+  let counter=1;
   showSearch.addEventListener("click", function(){
-    searchnav.classList.remove("search-bar");
+    if(counter%2==0){
+      searchnav.classList.add("search-bar");
+      counter++;
+    }
+    else{
+      searchnav.classList.remove("search-bar");
+      counter++;
+    }
+  });
+
+  const navigator = document.querySelector(".toCart");
+  navigator.addEventListener("click", () => {
+    window.location.href="cart.html";
   });
 
   
